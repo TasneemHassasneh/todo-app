@@ -1,11 +1,14 @@
 
+import Login from '../auth/login';
 import './Header.scss'
 
 
 function Header(){
     return (
+      <div className='all'>
       <nav>
-      <ul>
+        <div className='left-div'>
+        <ul>
         <li>
           <a to="/">Home</a>
         </li>
@@ -13,7 +16,15 @@ function Header(){
           <a to="/settings">Settings</a>
         </li>
       </ul>
-    </nav>
+        </div>
+        </nav>
+      <div className='right-div'>
+      <Login />
+      </div>
+
+      </div>
+
+      
       );
 }
 

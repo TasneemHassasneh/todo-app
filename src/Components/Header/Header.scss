@@ -1,12 +1,6 @@
 /* Header.scss */
 
-nav {
-    background-color: blue;
-    color: #fff;
-    padding: 10px;
-    margin-bottom:10px ;
-    padding: 10px;
-  }
+
   
   ul {
     list-style-type: none;
@@ -29,3 +23,13 @@ nav {
     }
   }
   
+ .all{
+  background-color: blue;
+  color: #fff;
+  padding: 10px;
+  margin-bottom:10px ;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+ }
