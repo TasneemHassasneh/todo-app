@@ -1,27 +1,27 @@
-import React from 'react';
+import { useContext } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Header from './Components/Header/Header';
+import ToDo from './Components/ToDo/ToDo';
+import SettingsForm from './Components/SettingsForm/SettingsForm';
+import { AuthContext } from './Context/Auth/Auth';
+import { When } from 'react-if';
+import Footer from './Components/Footer/Footer';
 
-import Home from './Components/Home/Home';
-import SettingsPage from './Components/Settings/Settings';
-import { SettingsProvider } from './context/SettingContext';
-import Header from "./Components/Header/Header";
-import Footer from "./Components/Footer/Footer";
-import {AuthProvider} from './context/AuthContext';
+const App = () => {
+  const { isLoggedIn } = useContext(AuthContext)
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <>
-      <AuthProvider >
+  return (
+    <BrowserRouter>
       <Header />
-      <SettingsProvider>
-      <Home />
-    <SettingsPage />
-      </SettingsProvider>
-      </AuthProvider>
-     <Footer />
-         </>
- 
-     
-    );
-  }
-}
+      <When condition={isLoggedIn}>
+        <Routes>
+          <Route path="/" element={<ToDo />} />
+          <Route path='/settings' element={<SettingsForm />} />
+        </Routes>
+      </When>
+      <Footer />
+    </BrowserRouter>
+  );
+};
+
+export default App;
